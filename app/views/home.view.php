@@ -9,7 +9,7 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="assets/images/ico.png" rel="icon">
+    <link href="<?= ROOT; ?>/assets/images/ico.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -20,11 +20,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="libs/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="libs/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="<?= ROOT; ?>/libs/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="<?= ROOT; ?>/libs/lightbox/css/lightbox.min.css" rel="stylesheet">
 
     <!-- Customized Stylesheet -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="<?= ROOT; ?>/assets/css/style.css" rel="stylesheet">
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
@@ -68,7 +68,7 @@
         <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item position-relative active" style="height: 100vh; min-height: 400px;">
-                    <img class="position-absolute w-100 h-100" src="assets/images/carousel-1.jpg"
+                    <img class="position-absolute w-100 h-100" src="<?= ROOT; ?>/assets/images/carousel-1.jpg"
                         style="object-fit: cover;">
 
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
@@ -92,7 +92,7 @@
                 </div>
 
                 <div class="carousel-item position-relative" style="height: 100vh; min-height: 400px;">
-                    <img class="position-absolute w-100 h-100" src="assets/images/carousel-2.jpg"
+                    <img class="position-absolute w-100 h-100" src="<?= ROOT; ?>/assets/images/carousel-2.jpg"
                         style="object-fit: cover;">
 
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
@@ -194,14 +194,14 @@
                 </div>
 
                 <div class="col-md-6 p-0" style="min-height: 400px;">
-                    <img class="position-absolute w-100 h-100" src="assets/images/about-1.jpg"
+                    <img class="position-absolute w-100 h-100" src="<?= ROOT; ?>/assets/images/about-1.jpg"
                         style="object-fit: cover;">
                 </div>
             </div>
 
             <div class="row m-0">
                 <div class="col-md-6 p-0" style="min-height: 400px;">
-                    <img class="position-absolute w-100 h-100" src="assets/images/about-2.jpg"
+                    <img class="position-absolute w-100 h-100" src="<?= ROOT; ?>/assets/images/about-2.jpg"
                         style="object-fit: cover;">
                 </div>
 
@@ -248,7 +248,7 @@
             <div class="container timeline position-relative p-0">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-right">
-                        <img class="img-fluid mr-md-3" src="assets/images/story-1.jpg" alt="">
+                        <img class="img-fluid mr-md-3" src="<?= ROOT; ?>/assets/images/story-1.jpg" alt="">
                     </div>
 
                     <div class="col-md-6 text-center text-md-left">
@@ -278,12 +278,12 @@
                     </div>
 
                     <div class="col-md-6 text-center text-md-left">
-                        <img class="img-fluid ml-md-3" src="assets/images/story-2.jpg" alt="">
+                        <img class="img-fluid ml-md-3" src="<?= ROOT; ?>/assets/images/story-2.jpg" alt="">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 text-center text-md-right">
-                        <img class="img-fluid mr-md-3" src="assets/images/story-3.jpg" alt="">
+                        <img class="img-fluid mr-md-3" src="<?= ROOT; ?>/assets/images/story-3.jpg" alt="">
                     </div>
                     <div class="col-md-6 text-center text-md-left">
                         <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4 ml-md-3">
@@ -310,7 +310,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 text-center text-md-left">
-                        <img class="img-fluid ml-md-3" src="assets/images/story-4.jpg" alt="">
+                        <img class="img-fluid ml-md-3" src="<?= ROOT; ?>/assets/images/story-4.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -329,38 +329,38 @@
 
         <div class="owl-carousel gallery-carousel">
             <div class="gallery-item">
-                <img class="img-fluid w-100" src="assets/images/gallery-1.jpg" alt="">
-                <a href="assets/images/gallery-1.jpg" data-lightbox="gallery">
+                <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/gallery-1.jpg" alt="">
+                <a href="<?= ROOT; ?>/assets/images/gallery-1.jpg" data-lightbox="gallery">
                     <i class="fa fa-2x fa-plus text-white"></i>
                 </a>
             </div>
             <div class="gallery-item">
-                <img class="img-fluid w-100" src="assets/images/gallery-2.jpg" alt="">
-                <a href="assets/images/gallery-2.jpg" data-lightbox="gallery">
+                <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/gallery-2.jpg" alt="">
+                <a href="<?= ROOT; ?>/assets/images/gallery-2.jpg" data-lightbox="gallery">
                     <i class="fa fa-2x fa-plus text-white"></i>
                 </a>
             </div>
             <div class="gallery-item">
-                <img class="img-fluid w-100" src="assets/images/gallery-3.jpg" alt="">
-                <a href="assets/images/gallery-3.jpg" data-lightbox="gallery">
+                <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/gallery-3.jpg" alt="">
+                <a href="<?= ROOT; ?>/assets/images/gallery-3.jpg" data-lightbox="gallery">
                     <i class="fa fa-2x fa-plus text-white"></i>
                 </a>
             </div>
             <div class="gallery-item">
-                <img class="img-fluid w-100" src="assets/images/gallery-4.jpg" alt="">
-                <a href="assets/images/gallery-4.jpg" data-lightbox="gallery">
+                <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/gallery-4.jpg" alt="">
+                <a href="<?= ROOT; ?>/assets/images/gallery-4.jpg" data-lightbox="gallery">
                     <i class="fa fa-2x fa-plus text-white"></i>
                 </a>
             </div>
             <div class="gallery-item">
-                <img class="img-fluid w-100" src="assets/images/gallery-5.jpg" alt="">
-                <a href="assets/images/gallery-5.jpg" data-lightbox="gallery">
+                <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/gallery-5.jpg" alt="">
+                <a href="<?= ROOT; ?>/assets/images/gallery-5.jpg" data-lightbox="gallery">
                     <i class="fa fa-2x fa-plus text-white"></i>
                 </a>
             </div>
             <div class="gallery-item">
-                <img class="img-fluid w-100" src="assets/images/gallery-6.jpg" alt="">
-                <a href="assets/images/gallery-6.jpg" data-lightbox="gallery">
+                <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/gallery-6.jpg" alt="">
+                <a href="<?= ROOT; ?>/assets/images/gallery-6.jpg" data-lightbox="gallery">
                     <i class="fa fa-2x fa-plus text-white"></i>
                 </a>
             </div>
@@ -393,7 +393,7 @@
             <div class="row">
                 <div class="col-md-6 border-right border-primary">
                     <div class="text-center text-md-right mr-md-3 mb-4 mb-md-0">
-                        <img class="img-fluid mb-4" src="assets/images/event-1.jpg" alt="">
+                        <img class="img-fluid mb-4" src="<?= ROOT; ?>/assets/images/event-1.jpg" alt="">
                         <h4 class="mb-3">The Reception</h4>
                         <p class="mb-2">123 Street, New York, USA</p>
                         <p class="mb-0">12:00AM - 13:00PM</p>
@@ -401,7 +401,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="text-center text-md-left ml-md-3">
-                        <img class="img-fluid mb-4" src="assets/images/event-2.jpg" alt="">
+                        <img class="img-fluid mb-4" src="<?= ROOT; ?>/assets/images/event-2.jpg" alt="">
                         <h4 class="mb-3">Wedding Party</h4>
                         <p class="mb-2">123 Street, New York, USA</p>
                         <p class="mb-0">12:00AM - 13:00PM</p>
@@ -437,7 +437,7 @@
             <div class="row portfolio-container">
                 <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
                     <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="assets/images/groomsmen-1.jpg" alt="">
+                        <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/groomsmen-1.jpg" alt="">
 
                         <div class="bg-secondary text-center p-4">
                             <h4 class="mb-3">Full Name</h4>
@@ -453,7 +453,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
                     <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="assets/images/bridesmaid-1.jpg" alt="">
+                        <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/bridesmaid-1.jpg" alt="">
                         <div class="bg-secondary text-center p-4">
                             <h4 class="mb-3">Full Name</h4>
                             <p class="text-uppercase">Best Friend</p>
@@ -468,7 +468,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
                     <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="assets/images/groomsmen-2.jpg" alt="">
+                        <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/groomsmen-2.jpg" alt="">
                         <div class="bg-secondary text-center p-4">
                             <h4 class="mb-3">Full Name</h4>
                             <p class="text-uppercase">Best Friend</p>
@@ -483,7 +483,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
                     <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="assets/images/bridesmaid-2.jpg" alt="">
+                        <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/bridesmaid-2.jpg" alt="">
                         <div class="bg-secondary text-center p-4">
                             <h4 class="mb-3">Full Name</h4>
                             <p class="text-uppercase">Best Friend</p>
@@ -498,7 +498,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
                     <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="assets/images/groomsmen-3.jpg" alt="">
+                        <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/groomsmen-3.jpg" alt="">
                         <div class="bg-secondary text-center p-4">
                             <h4 class="mb-3">Full Name</h4>
                             <p class="text-uppercase">Best Friend</p>
@@ -513,7 +513,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
                     <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="assets/images/bridesmaid-3.jpg" alt="">
+                        <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/bridesmaid-3.jpg" alt="">
                         <div class="bg-secondary text-center p-4">
                             <h4 class="mb-3">Full Name</h4>
                             <p class="text-uppercase">Best Friend</p>
@@ -634,14 +634,14 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="libs/easing/easing.min.js"></script>
-    <script src="libs/waypoints/waypoints.min.js"></script>
-    <script src="libs/owlcarousel/owl.carousel.min.js"></script>
-    <script src="libs/isotope/isotope.pkgd.min.js"></script>
-    <script src="libs/lightbox/js/lightbox.min.js"></script>
+    <script src="<?= ROOT; ?>/libs/easing/easing.min.js"></script>
+    <script src="<?= ROOT; ?>/libs/waypoints/waypoints.min.js"></script>
+    <script src="<?= ROOT; ?>/libs/owlcarousel/owl.carousel.min.js"></script>
+    <script src="<?= ROOT; ?>/libs/isotope/isotope.pkgd.min.js"></script>
+    <script src="<?= ROOT; ?>/libs/lightbox/js/lightbox.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="assets/js/main.js"></script>
+    <script src="<?= ROOT; ?>/assets/js/main.js"></script>
 </body>
 
 </html>

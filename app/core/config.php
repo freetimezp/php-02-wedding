@@ -1,18 +1,15 @@
-<?php 
+<?php
 
-if($_SERVER['SERVER_NAME'] == 'localhost')
-{
+if ($_SERVER['SERVER_NAME'] == 'localhost') {
 	/** database config **/
 	define('DBNAME', 'my_db');
 	define('DBHOST', 'localhost');
 	define('DBUSER', 'root');
 	define('DBPASS', '');
 	define('DBDRIVER', '');
-	
-	define('ROOT', 'http://localhost/mvc/public');
 
-}else
-{
+	define('ROOT', 'http://localhost/php-02-wedding/public');
+} else {
 	/** database config **/
 	define('DBNAME', 'my_db');
 	define('DBHOST', 'localhost');
@@ -21,7 +18,6 @@ if($_SERVER['SERVER_NAME'] == 'localhost')
 	define('DBDRIVER', '');
 
 	define('ROOT', 'https://www.yourwebsite.com');
-
 }
 
 define('APP_NAME', "My Webiste");
