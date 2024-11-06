@@ -9,7 +9,7 @@ class Admin
 
     public function index()
     {
-
+        //redirect('login');
         $this->view('admin');
     }
 }

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="<?= APP_DESC ?>">
     <title>Admin Dashboard | <?= APP_NAME ?></title>
+    <link href="<?= ROOT; ?>/assets/images/ico.png" rel="icon">
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
@@ -281,6 +282,13 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2"
+                                    href="<?= ROOT ?>/admin/user">
+                                    <span class="bi bi-person"></span>
+                                    <span class="pt-1">Users</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2"
                                     href="<?= ROOT ?>/admin/about">
                                     <span class="bi bi-file-earmark-person-fill"></span>
                                     <span class="pt-1">About</span>
@@ -340,7 +348,7 @@
                         </h6>
                         <ul class="nav flex-column mb-auto">
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                <a class="nav-link d-flex align-items-center gap-2" href="<?= ROOT ?>">
                                     <span class="bi bi-globe"></span>
                                     <span class="pt-1">Front end</span>
                                 </a>
@@ -359,7 +367,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                <a class="nav-link d-flex align-items-center gap-2"
+                                    href="<?= ROOT ?>/logout">
                                     <svg class="bi">
                                         <use xlink:href="#door-closed" />
                                     </svg>
