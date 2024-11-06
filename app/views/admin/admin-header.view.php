@@ -282,7 +282,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2"
-                                    href="<?= ROOT ?>/admin/user">
+                                    href="<?= ROOT ?>/admin/users">
                                     <span class="bi bi-person"></span>
                                     <span class="pt-1">Users</span>
                                 </a>
@@ -382,7 +382,8 @@
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Dashboard</h1>
+                    <h1 class="h2">Admin</h1>
+                    <hr>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group me-2">
                             <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -398,23 +399,3 @@
                 </div>
 
                 <div class="content">
-
-                </div>
-            </main>
-        </div>
-    </div>
-
-    <script src="<?= ROOT ?>/assets/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-        let links = document.querySelectorAll(".nav a");
-
-        for (var i = 0; i < links.length; i++) {
-            if (window.location.href == links[i].href) {
-                links[i].classList.add("active");
-            }
-        }
-    </script>
-</body>
-
-</html>

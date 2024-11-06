@@ -2,7 +2,7 @@
 
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
 	/** database config **/
-	define('DBNAME', 'my_db');
+	define('DBNAME', 'wedding_db');
 	define('DBHOST', 'localhost');
 	define('DBUSER', 'root');
 	define('DBPASS', '');
@@ -11,7 +11,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
 	define('ROOT', 'http://localhost/php-02-wedding/public');
 } else {
 	/** database config **/
-	define('DBNAME', 'my_db');
+	define('DBNAME', 'wedding_db');
 	define('DBHOST', 'localhost');
 	define('DBUSER', 'root');
 	define('DBPASS', '');
