@@ -610,6 +610,8 @@
                 </a>
             </div>
             <div class="d-flex justify-content-center py-2">
+                <a href="<?= ROOT ?>/admin">Admin</a>
+                <span class="px-3">|</span>
                 <p class="text-white" href="#">info@example.com</p>
                 <span class="px-3">|</span>
                 <p class="text-white" href="#">+012 345 6789</p>
