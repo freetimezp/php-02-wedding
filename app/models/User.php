@@ -41,7 +41,7 @@ class User
 
 
 		//check password
-		if (empty($data['password'])) {
+		if (!$id && empty($data['password'])) {
 			$this->errors['password'] = "Password is required";
 		}
 

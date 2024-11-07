@@ -29,7 +29,40 @@
     </div>
 
 <?php elseif ($action == 'edit'): ?>
-    edit
+    <div class="col-md-6 mx-auto p-3">
+        <h5>Edit user info:</h5>
+
+        <?php if (!empty($errors)): ?>
+            <div class="alert alert-danger text-center">
+                <?= implode("<br>", $errors); ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (!empty($row)): ?>
+            <form method="POST">
+                <input value="<?= old_value('username', $row->username) ?>" type="text" name="username"
+                    placeholder="Username" class="form-control mt-2">
+                <input value="<?= old_value('email', $row->email) ?>" type="email" name="email"
+                    placeholder="Email" class="form-control mt-2">
+                <input value="<?= old_value('password') ?>" type="text" name="password"
+                    placeholder="Password (leave empty to save old password)" class="form-control mt-2">
+
+                <button class="btn btn-primary mt-2">Save</button>
+
+                <a href="<?= ROOT ?>/admin/users">
+                    <button type="button" class="btn btn-secondary mt-2">Back</button>
+                </a>
+            </form>
+        <?php else: ?>
+            <div class="alert alert-danger text-center">
+                Record not found
+            </div>
+            <a href="<?= ROOT ?>/admin/users">
+                <button type="button" class="btn btn-secondary mt-2">Back</button>
+            </a>
+        <?php endif; ?>
+
+    </div>
 <?php elseif ($action == 'delete'): ?>
     delete
 <?php else: ?>
@@ -63,8 +96,13 @@
                         <td><?= $row->username ?></td>
                         <td><?= $row->email ?></td>
                         <td>
-                            <button class="btn btn-sm btn-warning">Edit</button>
-                            <button class="btn btn-sm btn-danger">Delete</button>
+                            <a href="<?= ROOT ?>/admin/users/edit/<?= $row->id ?>">
+                                <button class="btn btn-sm btn-warning">Edit</button>
+                            </a>
+
+                            <a href="<?= ROOT ?>/admin/users/delete/<?= $row->id ?>">
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
