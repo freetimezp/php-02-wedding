@@ -66,4 +66,35 @@ class Admin
 
         $this->view('admin/users', $data);
     }
+
+
+    public function contact($action = null, $id = null)
+    {
+        $user = new User();
+        $contact = new Contact_model();
+
+        //$contact->create_table();
+
+        if (!$user->logged_in()) {
+            redirect('login');
+        }
+
+        $data['action'] = $action;
+        $data['rows'] = $contact->findAll();
+
+        if ($action == 'edit') {
+            $data['row'] = $contact->first(['id' => $id]);
+
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                if ($contact->validate($_POST, $id)) {
+                    $contact->update($id, $_POST);
+                    redirect('admin/contact');
+                }
+            }
+        }
+
+        $data['errors'] = $contact->errors;
+
+        $this->view('admin/contact', $data);
+    }
 }
