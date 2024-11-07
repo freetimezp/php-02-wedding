@@ -45,6 +45,13 @@ class Admin
                     redirect('admin/users');
                 }
             }
+        } else if ($action == 'delete') {
+            $data['row'] = $user->first(['id' => $id]);
+
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $user->delete($id);
+                redirect('admin/users');
+            }
         }
 
         $data['errors'] = $user->errors;

@@ -61,10 +61,41 @@
                 <button type="button" class="btn btn-secondary mt-2">Back</button>
             </a>
         <?php endif; ?>
-
     </div>
 <?php elseif ($action == 'delete'): ?>
-    delete
+    <div class="col-md-6 mx-auto p-3">
+        <h5>Delete user:</h5>
+
+        <?php if (!empty($errors)): ?>
+            <div class="alert alert-danger text-center">
+                <?= implode("<br>", $errors); ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (!empty($row)): ?>
+            <form method="POST">
+                <div class="form-control mt-2">
+                    Username: <?= old_value('username', $row->username) ?>
+                </div>
+                <div class="form-control mt-2">
+                    Email: <?= old_value('email', $row->email) ?>
+                </div>
+
+                <button class="btn btn-danger mt-4">Delete</button>
+
+                <a href="<?= ROOT ?>/admin/users">
+                    <button type="button" class="btn btn-secondary mt-4">Back</button>
+                </a>
+            </form>
+        <?php else: ?>
+            <div class="alert alert-danger text-center">
+                Record not found
+            </div>
+            <a href="<?= ROOT ?>/admin/users">
+                <button type="button" class="btn btn-secondary mt-2">Back</button>
+            </a>
+        <?php endif; ?>
+    </div>
 <?php else: ?>
 
     <h5>
