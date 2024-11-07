@@ -166,16 +166,22 @@
 
 
     <main class="form-signin w-100 m-auto">
-        <form>
+        <form method="POST">
             <img class="mb-4" src="<?= ROOT ?>/assets/images/bootstrap-logo.svg" alt="" width="72" height="57">
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
+            <?php if (!empty($errors)): ?>
+                <div class="alert alert-danger text-center">
+                    <?= implode("<br>", $errors); ?>
+                </div>
+            <?php endif; ?>
+
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <input value="<?= old_value('email') ?>" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
                 <label for="floatingInput">Email address</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <input value="<?= old_value('password') ?>" type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
                 <label for="floatingPassword">Password</label>
             </div>
 

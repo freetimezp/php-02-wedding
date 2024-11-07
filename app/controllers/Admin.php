@@ -11,13 +11,21 @@ class Admin
     {
         $user = new User();
 
-        //redirect('login');
+        if (!$user->logged_in()) {
+            redirect('login');
+        }
+
         $this->view('admin/dashboard');
     }
 
     public function users($action = null, $id = null)
     {
         $user = new User();
+
+        if (!$user->logged_in()) {
+            redirect('login');
+        }
+
         $data['action'] = $action;
         $data['rows'] = $user->findAll();
 

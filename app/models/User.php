@@ -54,6 +54,28 @@ class User
 		return false;
 	}
 
+
+	public function authenticate($row)
+	{
+		$_SESSION['USER'] = $row;
+	}
+
+	public function logout()
+	{
+		if (!empty($_SESSION['USER'])) {
+			unset($_SESSION['USER']);
+		}
+	}
+
+	public function logged_in()
+	{
+		if (!empty($_SESSION['USER'])) {
+			return true;
+		}
+
+		return false;
+	}
+
 	public function create_table()
 	{
 		$query = "create table if not exists users(
