@@ -46,6 +46,7 @@ class User
 		}
 
 
+
 		if (empty($this->errors)) {
 			return true;
 		}
