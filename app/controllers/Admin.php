@@ -68,6 +68,62 @@ class Admin
     }
 
 
+    public function gallery($action = null, $id = null)
+    {
+        $user = new User();
+        $gallery = new Gallery_model();
+        //$gallery->create_table();
+
+        if (!$user->logged_in()) {
+            redirect('login');
+        }
+
+        $data['action'] = $action;
+        $data['rows'] = $gallery->findAll();
+
+        if ($action == 'new') {
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                if ($gallery->validate($_FILES)) {
+                    $destination = time() . '-' . $_FILES['image']['name'];
+
+                    move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+
+                    $_POST['image'] = $destination;
+
+                    $gallery->insert($_POST);
+                    redirect('admin/gallery');
+                }
+            }
+        } else if ($action == 'edit') {
+            $data['row'] = $gallery->first(['id' => $id]);
+
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                if ($gallery->validate($_POST, $id)) {
+                    if (empty($_POST['password'])) {
+                        unset($_POST['password']);
+                    } else {
+                        $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                    }
+
+                    $gallery->update($id, $_POST);
+                    redirect('admin/gallery');
+                }
+            }
+        } else if ($action == 'delete') {
+            $data['row'] = $gallery->first(['id' => $id]);
+
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $gallery->delete($id);
+                redirect('admin/gallery');
+            }
+        }
+
+        $data['errors'] = $gallery->errors;
+
+        $this->view('admin/gallery', $data);
+    }
+
+
     public function contact($action = null, $id = null)
     {
         $user = new User();

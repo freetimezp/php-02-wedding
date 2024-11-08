@@ -44,3 +44,13 @@ function user($key = '')
 
 	return '';
 }
+
+
+function get_image($filename = '')
+{
+	if (file_exists($filename)) {
+		return ROOT . '/' . $filename;
+	}
+
+	return ROOT . '/assets/images/noimage.png';
+}

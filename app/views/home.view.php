@@ -327,42 +327,14 @@
         </div>
 
         <div class="owl-carousel gallery-carousel">
+
             <div class="gallery-item">
                 <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/gallery-1.jpg" alt="">
                 <a href="<?= ROOT; ?>/assets/images/gallery-1.jpg" data-lightbox="gallery">
                     <i class="fa fa-2x fa-plus text-white"></i>
                 </a>
             </div>
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/gallery-2.jpg" alt="">
-                <a href="<?= ROOT; ?>/assets/images/gallery-2.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/gallery-3.jpg" alt="">
-                <a href="<?= ROOT; ?>/assets/images/gallery-3.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/gallery-4.jpg" alt="">
-                <a href="<?= ROOT; ?>/assets/images/gallery-4.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/gallery-5.jpg" alt="">
-                <a href="<?= ROOT; ?>/assets/images/gallery-5.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/gallery-6.jpg" alt="">
-                <a href="<?= ROOT; ?>/assets/images/gallery-6.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
+
         </div>
     </div>
     <!-- Gallery End -->
