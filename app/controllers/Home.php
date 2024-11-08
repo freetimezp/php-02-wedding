@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * home class
@@ -9,8 +9,12 @@ class Home
 
 	public function index()
 	{
+		$data = [];
 
-		$this->view('home');
+		$contact = new Contact_model();
+		$data['social_links'] = $contact->where(['id' => 1]);
+		$data['social_links'] = $data['social_links'][0];
+
+		$this->view('home', $data);
 	}
-
 }

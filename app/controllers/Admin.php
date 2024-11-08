@@ -80,6 +80,7 @@ class Admin
         }
 
         $data['action'] = $action;
+        $contact->limit = 1;
         $data['rows'] = $contact->findAll();
 
         if ($action == 'edit') {

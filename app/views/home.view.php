@@ -597,23 +597,33 @@
                 <i class="far fa-heart text-white"></i>
             </div>
             <div class="d-flex justify-content-center mb-4">
-                <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#">
+                <a class="btn btn-lg btn-outline-light btn-lg-square mr-2"
+                    href="<?= $social_links->twitter_link ?? "#" ?>">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i
-                        class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i
-                        class="fab fa-linkedin-in"></i></a>
-                <a class="btn btn-lg btn-outline-light btn-lg-square" href="#">
+                <a class="btn btn-lg btn-outline-light btn-lg-square mr-2"
+                    href="<?= $social_links->facebook_link ?? "#" ?>">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="btn btn-lg btn-outline-light btn-lg-square mr-2"
+                    href="<?= $social_links->linkedin_link ?? "#" ?>">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a class="btn btn-lg btn-outline-light btn-lg-square"
+                    href="<?= $social_links->instagram_link ?? "#" ?>">
                     <i class="fab fa-instagram"></i>
                 </a>
             </div>
             <div class="d-flex justify-content-center py-2">
                 <a href="<?= ROOT ?>/admin">Admin</a>
                 <span class="px-3">|</span>
-                <p class="text-white" href="#">info@example.com</p>
+                <p class="text-white" href="mailto:<?= $social_links->email ?>">
+                    <?= $social_links->email ?? "email@gmail.com" ?>
+                </p>
                 <span class="px-3">|</span>
-                <p class="text-white" href="#">+012 345 6789</p>
+                <p class="text-white" href="#">
+                    +<?= $social_links->phone ?? "012 345 6789" ?>
+                </p>
             </div>
             <p class="m-0">
                 &copy; <a class="text-primary" href="#"> 2024</a>.
