@@ -83,8 +83,14 @@ class Admin
 
         if ($action == 'new') {
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $folder = "uploads/";
+
+                if (!file_exists($folder)) {
+                    mkdir($folder, 0777, true);
+                }
+
                 if ($gallery->validate($_FILES)) {
-                    $destination = time() . '-' . $_FILES['image']['name'];
+                    $destination = $folder . time() . '-' . $_FILES['image']['name'];
 
                     move_uploaded_file($_FILES['image']['tmp_name'], $destination);
 
@@ -98,8 +104,14 @@ class Admin
             $data['row'] = $gallery->first(['id' => $id]);
 
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $folder = "uploads/";
+
+                if (!file_exists($folder)) {
+                    mkdir($folder, 0777, true);
+                }
+
                 if ($gallery->validate($_FILES, $id)) {
-                    $destination = time() . '-' . $_FILES['image']['name'];
+                    $destination = $folder . time() . '-' . $_FILES['image']['name'];
 
                     move_uploaded_file($_FILES['image']['tmp_name'], $destination);
 
@@ -132,6 +144,85 @@ class Admin
 
         $this->view('admin/gallery', $data);
     }
+
+
+    public function family($action = null, $id = null)
+    {
+        $user = new User();
+        $family = new Family_model();
+        //$family->create_table();
+
+        if (!$user->logged_in()) {
+            redirect('login');
+        }
+
+        $data['action'] = $action;
+        $data['rows'] = $family->findAll();
+
+        if ($action == 'new') {
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $folder = "uploads/";
+
+                if (!file_exists($folder)) {
+                    mkdir($folder, 0777, true);
+                }
+
+                if ($family->validate($_FILES, $_POST)) {
+                    $destination = $folder . time() . '-' . $_FILES['image']['name'];
+
+                    move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+
+                    $_POST['image'] = $destination;
+
+                    $family->insert($_POST);
+                    redirect('admin/family');
+                }
+            }
+        } else if ($action == 'edit') {
+            $data['row'] = $family->first(['id' => $id]);
+
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $folder = "uploads/";
+
+                if (!file_exists($folder)) {
+                    mkdir($folder, 0777, true);
+                }
+
+                if ($family->validate($_FILES, $_POST, $id)) {
+                    $destination = $folder . time() . '-' . $_FILES['image']['name'];
+
+                    move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+
+                    $_POST['image'] = $destination;
+
+                    $family->update($id, $_POST);
+
+                    if (file_exists($data['row']->image)) {
+                        unlink($data['row']->image);
+                    }
+
+                    redirect('admin/family');
+                }
+            }
+        } else if ($action == 'delete') {
+            $data['row'] = $family->first(['id' => $id]);
+
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $family->delete($id);
+
+                if (file_exists($data['row']->image)) {
+                    unlink($data['row']->image);
+                }
+
+                redirect('admin/family');
+            }
+        }
+
+        $data['errors'] = $family->errors;
+
+        $this->view('admin/family', $data);
+    }
+
 
 
     public function contact($action = null, $id = null)
