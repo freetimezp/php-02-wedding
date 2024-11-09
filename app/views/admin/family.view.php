@@ -52,8 +52,6 @@
                     value="<?= old_value("linkedin_link") ?>">
             </div>
 
-
-
             <button class="btn btn-primary mt-2">Save</button>
 
             <a href="<?= ROOT ?>/admin/family">
@@ -71,7 +69,7 @@
 
 <?php elseif ($action == 'edit'): ?>
     <div class="col-md-6 mx-auto p-3">
-        <h5>Edit image:</h5>
+        <h5>Edit family person info:</h5>
 
         <?php if (!empty($errors)): ?>
             <div class="alert alert-danger text-center">
@@ -89,6 +87,30 @@
                         style="width: 300px; height: 300px; object-fit: cover;">
                 </label>
                 <br>
+
+                <input value="<?= old_value('name', $row->name) ?>" type="text" name="name"
+                    placeholder="Full name" class="form-control mt-2">
+                <input value="<?= old_value('title', $row->title) ?>" type="text" name="title"
+                    placeholder="Title" class="form-control mb-2">
+                <br>
+
+                <div class="text-start">
+                    <label>Twiiter link:</label>
+                    <input type="text" name="twitter_link" placeholder="Twiiter link" class="form-control mb-2"
+                        value="<?= old_value("twitter_link", $row->twitter_link) ?>">
+
+                    <label>Facebook link:</label>
+                    <input type="text" name="facebook_link" placeholder="Facebook link" class="form-control mb-2"
+                        value="<?= old_value("facebook_link", $row->facebook_link) ?>">
+
+                    <label>Instagram link:</label>
+                    <input type="text" name="instagram_link" placeholder="Instagram link" class="form-control mb-2"
+                        value="<?= old_value("instagram_link", $row->instagram_link) ?>">
+
+                    <label>LinkedIn link:</label>
+                    <input type="text" name="linkedin_link" placeholder="LinkedIn link" class="form-control mb-4"
+                        value="<?= old_value("linkedin_link", $row->linkedin_link) ?>">
+                </div>
 
                 <button class="btn btn-primary mt-2">Save</button>
 
@@ -114,7 +136,7 @@
     </div>
 <?php elseif ($action == 'delete'): ?>
     <div class="col-md-6 mx-auto p-3">
-        <h5>Delete image:</h5>
+        <h5>Delete person from family list:</h5>
 
         <?php if (!empty($errors)): ?>
             <div class="alert alert-danger text-center">
@@ -180,7 +202,7 @@
                                 style="width: 200px; height: 200px; object-fit:cover;">
                         </td>
 
-                        <td><?= esc($row->name) ?></td>
+                        <td><?= ucfirst(esc($row->name)) ?></td>
                         <td><?= esc($row->title) ?></td>
 
                         <td>

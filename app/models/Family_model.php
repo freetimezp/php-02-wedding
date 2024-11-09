@@ -33,11 +33,19 @@ class Family_model
             'image/webp'
         ];
 
-        if (empty($files_data['image']['name'])) {
-            $this->errors['image'] = "An image is required!";
+        if (!$id) {
+            if (empty($files_data['image']['name'])) {
+                $this->errors['image'] = "An image is required!";
+            } else {
+                if (!in_array($files_data['image']['type'], $allowed_types)) {
+                    $this->errors['image'] = "Only this types of image is available: " . implode(", ", $allowed_types);
+                }
+            }
         } else {
-            if (!in_array($files_data['image']['type'], $allowed_types)) {
-                $this->errors['image'] = "Only this types of image is available: " . implode(", ", $allowed_types);
+            if (!empty($files_data['image']['name'])) {
+                if (!in_array($files_data['image']['type'], $allowed_types)) {
+                    $this->errors['image'] = "Only this types of image is available: " . implode(", ", $allowed_types);
+                }
             }
         }
 

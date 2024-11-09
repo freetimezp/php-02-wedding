@@ -189,17 +189,19 @@ class Admin
                 }
 
                 if ($family->validate($_FILES, $_POST, $id)) {
-                    $destination = $folder . time() . '-' . $_FILES['image']['name'];
+                    if (!empty($_FILES['image']['name'])) {
+                        $destination = $folder . time() . '-' . $_FILES['image']['name'];
 
-                    move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+                        move_uploaded_file($_FILES['image']['tmp_name'], $destination);
 
-                    $_POST['image'] = $destination;
+                        $_POST['image'] = $destination;
+
+                        if (file_exists($data['row']->image)) {
+                            unlink($data['row']->image);
+                        }
+                    }
 
                     $family->update($id, $_POST);
-
-                    if (file_exists($data['row']->image)) {
-                        unlink($data['row']->image);
-                    }
 
                     redirect('admin/family');
                 }
