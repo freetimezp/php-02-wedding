@@ -18,7 +18,8 @@ class Family_model
         'facebook_link',
         'instagram_link',
         'linkedin_link',
-        'image'
+        'image',
+        'list_order'
     ];
 
     public function validate($files_data, $post_data, $id = null)
@@ -78,7 +79,9 @@ class Family_model
 			twitter_link varchar(1024) null,
 			facebook_link varchar(1024) null,
 			instagram_link varchar(1024) null,
-			linkedin_link varchar(1024) null
+			linkedin_link varchar(1024) null,
+
+			list_order int(10) default 0
 		)";
 
         $this->query($query);

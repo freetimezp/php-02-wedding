@@ -411,97 +411,52 @@
             </div>
 
             <div class="row portfolio-container">
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/groomsmen-1.jpg" alt="">
 
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">Full Name</h4>
-                            <p class="text-uppercase">Best Friend</p>
-                            <div class="d-inline-block">
-                                <a class="mx-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="mx-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="mx-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="mx-2" href="#"><i class="fab fa-instagram"></i></a>
+                <?php if (!empty($family)): ?>
+                    <?php foreach ($family as $person): ?>
+
+                        <?php
+                        $addClass = "";
+                        if ($person->title == "friend") {
+                            $addClass = "first";
+                        } else {
+                            $addClass = "second";
+                        }
+                        ?>
+
+                        <div class="col-lg-4 col-md-6 mb-4 portfolio-item <?= $addClass ?>">
+                            <div class="position-relative mb-2">
+                                <img class="img-fluid w-100" src="<?= get_image($person->image) ?>" alt=""
+                                    style="height: 300px; object-fit: cover;">
+
+                                <div class="bg-secondary text-center p-4">
+                                    <h4 class="mb-3">
+                                        <?= ucfirst(esc($person->name)) ?>
+                                    </h4>
+                                    <p class="text-uppercase" class="text-transform: uppercase;">
+                                        <?= esc($person->title) ?>
+                                    </p>
+                                    <div class="d-inline-block">
+                                        <a class="mx-2" href="<?= $person->twitter_link ?>">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a class="mx-2" href="<?= $person->facebook_link ?>">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                        <a class="mx-2" href="<?= $person->linkedin_link ?>">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                        <a class="mx-2" href="<?= $person->instagram_link ?>">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/bridesmaid-1.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">Full Name</h4>
-                            <p class="text-uppercase">Best Friend</p>
-                            <div class="d-inline-block">
-                                <a class="mx-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="mx-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="mx-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="mx-2" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/groomsmen-2.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">Full Name</h4>
-                            <p class="text-uppercase">Best Friend</p>
-                            <div class="d-inline-block">
-                                <a class="mx-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="mx-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="mx-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="mx-2" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/bridesmaid-2.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">Full Name</h4>
-                            <p class="text-uppercase">Best Friend</p>
-                            <div class="d-inline-block">
-                                <a class="mx-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="mx-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="mx-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="mx-2" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/groomsmen-3.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">Full Name</h4>
-                            <p class="text-uppercase">Best Friend</p>
-                            <div class="d-inline-block">
-                                <a class="mx-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="mx-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="mx-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="mx-2" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/bridesmaid-3.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">Full Name</h4>
-                            <p class="text-uppercase">Best Friend</p>
-                            <div class="d-inline-block">
-                                <a class="mx-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="mx-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="mx-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="mx-2" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
             </div>
         </div>
     </div>

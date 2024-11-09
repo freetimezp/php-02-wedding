@@ -18,6 +18,12 @@ class Home
 		$gallery = new Gallery_model();
 		$data['gallery'] = $gallery->findAll();
 
+		$family = new Family_model();
+		$family->order_type = "asc";
+		$family->limit = 20;
+		$family->order_column = 'list_order';
+		$data['family'] = $family->findAll();
+
 		$this->view('home', $data);
 	}
 }

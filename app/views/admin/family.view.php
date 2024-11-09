@@ -29,6 +29,11 @@
                 placeholder="Title" class="form-control mb-2">
             <br>
 
+            <label class="text-start d-block">List order (if 0, then person in top of family list):</label>
+            <input value="<?= old_value('list_order') ?>" type="number" name="list_order"
+                class="form-control mb-2" min="0" placeholder="0">
+            <br>
+
             <small class="bg-primary text-white rounded p-1 mb-3 d-block">
                 Please, enter full links e.g https://www.yoursite.com
             </small>
@@ -92,6 +97,16 @@
                     placeholder="Full name" class="form-control mt-2">
                 <input value="<?= old_value('title', $row->title) ?>" type="text" name="title"
                     placeholder="Title" class="form-control mb-2">
+                <br>
+
+                <label class="text-start d-block">List order (if 0, then person in top of family list):</label>
+                <input value="<?= old_value('list_order', $row->list_order) ?>" type="number" name="list_order"
+                    class="form-control mb-2" min="0">
+                <br>
+
+                <small class="bg-primary text-white rounded p-1 mb-3 d-block">
+                    Please, enter full links e.g https://www.yoursite.com
+                </small>
                 <br>
 
                 <div class="text-start">
@@ -188,6 +203,7 @@
                 <th>Image</th>
                 <th>Name</th>
                 <th>Title</th>
+                <th>Rank List</th>
                 <th>Actions</th>
             </tr>
         <?php endif; ?>
@@ -204,6 +220,7 @@
 
                         <td><?= ucfirst(esc($row->name)) ?></td>
                         <td><?= esc($row->title) ?></td>
+                        <td><?= $row->list_order ?></td>
 
                         <td>
                             <a href="<?= ROOT ?>/admin/family/edit/<?= $row->id ?>">
