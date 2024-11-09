@@ -327,14 +327,19 @@
         </div>
 
         <div class="owl-carousel gallery-carousel">
+            <?php if (!empty($gallery)): ?>
+                <?php foreach ($gallery as $image_row): ?>
 
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="<?= ROOT; ?>/assets/images/gallery-1.jpg" alt="">
-                <a href="<?= ROOT; ?>/assets/images/gallery-1.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
+                    <div class="gallery-item">
+                        <img class="img-fluid w-100" src="<?= get_image($image_row->image) ?>"
+                            alt="" style="object-fit: cover; height: 300px;">
+                        <a href="<?= get_image($image_row->image) ?>" data-lightbox="gallery">
+                            <i class="fa fa-2x fa-plus text-white"></i>
+                        </a>
+                    </div>
 
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </div>
     <!-- Gallery End -->
