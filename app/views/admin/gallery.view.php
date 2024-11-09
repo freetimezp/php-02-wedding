@@ -92,9 +92,12 @@
 
         <?php if (!empty($row)): ?>
             <form method="POST">
-                <div class="form-control mt-2">
-                    Username: <?= old_value('username', $row->username) ?>
-                </div>
+                <label class="mb-4">
+                    <input onchange="display_image(this.files[0], event)" type="file" name="image" class="d-none">
+                    <img src="<?= get_image($row->image) ?>"
+                        style="width: 300px; height: 300px; object-fit: cover;">
+                </label>
+                <br>
 
                 <button class="btn btn-danger mt-4">Delete</button>
 

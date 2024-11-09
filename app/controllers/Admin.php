@@ -119,6 +119,11 @@ class Admin
 
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $gallery->delete($id);
+
+                if (file_exists($data['row']->image)) {
+                    unlink($data['row']->image);
+                }
+
                 redirect('admin/gallery');
             }
         }
