@@ -13,7 +13,7 @@
         <?php endif; ?>
 
         <form method="POST" class="text-center" enctype="multipart/form-data">
-            <label>(click to change image)</label>
+            <label>(click to change image)</label><br>
 
             <label class="mb-4">
                 <input onchange="display_image(this.files[0], event)" type="file" name="image" class="d-none">
@@ -48,9 +48,15 @@
         <?php endif; ?>
 
         <?php if (!empty($row)): ?>
-            <form method="POST">
-                <input value="<?= old_value('username', $row->username) ?>" type="text" name="username"
-                    placeholder="Username" class="form-control mt-2">
+            <form method="POST" class="text-center" enctype="multipart/form-data">
+                <label>(click to change image)</label><br>
+
+                <label class="mb-4">
+                    <input onchange="display_image(this.files[0], event)" type="file" name="image" class="d-none">
+                    <img src="<?= get_image($row->image) ?>"
+                        style="width: 300px; height: 300px; object-fit: cover;">
+                </label>
+                <br>
 
                 <button class="btn btn-primary mt-2">Save</button>
 
@@ -66,6 +72,13 @@
                 <button type="button" class="btn btn-secondary mt-2">Back</button>
             </a>
         <?php endif; ?>
+
+        <script>
+            function display_image(file, e) {
+                let img = e.currentTarget.parentNode.querySelector("img");
+                img.src = URL.createObjectURL(file);
+            }
+        </script>
     </div>
 <?php elseif ($action == 'delete'): ?>
     <div class="col-md-6 mx-auto p-3">

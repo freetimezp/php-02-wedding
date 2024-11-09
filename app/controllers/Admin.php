@@ -98,14 +98,19 @@ class Admin
             $data['row'] = $gallery->first(['id' => $id]);
 
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
-                if ($gallery->validate($_POST, $id)) {
-                    if (empty($_POST['password'])) {
-                        unset($_POST['password']);
-                    } else {
-                        $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                    }
+                if ($gallery->validate($_FILES, $id)) {
+                    $destination = time() . '-' . $_FILES['image']['name'];
+
+                    move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+
+                    $_POST['image'] = $destination;
 
                     $gallery->update($id, $_POST);
+
+                    if (file_exists($data['row']->image)) {
+                        unlink($data['row']->image);
+                    }
+
                     redirect('admin/gallery');
                 }
             }
