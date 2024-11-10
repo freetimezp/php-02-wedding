@@ -76,7 +76,7 @@ class Story_model
 			title varchar(100) not null,
 			description varchar(2048) not null,
 
-            date datetime null,
+            date date null,
 			
 			list_order int(10) default 0
 		)";

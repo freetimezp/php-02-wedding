@@ -56,7 +56,7 @@
 
 <?php elseif ($action == 'edit'): ?>
     <div class="col-md-6 mx-auto p-3">
-        <h5>Edit family person info:</h5>
+        <h5>Edit story info:</h5>
 
         <?php if (!empty($errors)): ?>
             <div class="alert alert-danger text-center">
@@ -75,43 +75,27 @@
                 </label>
                 <br>
 
-                <input value="<?= old_value('name', $row->name) ?>" type="text" name="name"
-                    placeholder="Full name" class="form-control mt-2">
                 <input value="<?= old_value('title', $row->title) ?>" type="text" name="title"
-                    placeholder="Title" class="form-control mb-2">
+                placeholder="Story title" class="form-control mt-2">
+                <textarea name="description" placeholder="Story description" class="form-control mb-2"
+                    rows="6"><?= old_value('description', $row->description) ?></textarea>
                 <br>
 
-                <label class="text-start d-block">List order (if 0, then person in top of family list):</label>
-                <input value="<?= old_value('list_order', $row->list_order) ?>" type="number" name="list_order"
-                    class="form-control mb-2" min="0">
+                <label class="text-start d-block">Story date:</label>
+                <input value="<?= old_value('date', $row->date) ?>" type="date" name="date"
+                    placeholder="Story date" class="form-control mt-2 story-date">
                 <br>
 
-                <small class="bg-primary text-white rounded p-1 mb-3 d-block">
-                    Please, enter full links e.g https://www.yoursite.com
-                </small>
+                <label class="text-start d-block">
+                    List order (if 0, then story in top of list):
+                </label>
+                <input value="<?= old_value('list_order', $row->list_order) ?>" type="number" 
+                    name="list_order" class="form-control mb-2" min="0">
                 <br>
-
-                <div class="text-start">
-                    <label>Twiiter link:</label>
-                    <input type="text" name="twitter_link" placeholder="Twiiter link" class="form-control mb-2"
-                        value="<?= old_value("twitter_link", $row->twitter_link) ?>">
-
-                    <label>Facebook link:</label>
-                    <input type="text" name="facebook_link" placeholder="Facebook link" class="form-control mb-2"
-                        value="<?= old_value("facebook_link", $row->facebook_link) ?>">
-
-                    <label>Instagram link:</label>
-                    <input type="text" name="instagram_link" placeholder="Instagram link" class="form-control mb-2"
-                        value="<?= old_value("instagram_link", $row->instagram_link) ?>">
-
-                    <label>LinkedIn link:</label>
-                    <input type="text" name="linkedin_link" placeholder="LinkedIn link" class="form-control mb-4"
-                        value="<?= old_value("linkedin_link", $row->linkedin_link) ?>">
-                </div>
 
                 <button class="btn btn-primary mt-2">Save</button>
 
-                <a href="<?= ROOT ?>/admin/family">
+                <a href="<?= ROOT ?>/admin/story">
                     <button type="button" class="btn btn-secondary mt-2">Back</button>
                 </a>
             </form>
@@ -119,7 +103,7 @@
             <div class="alert alert-danger text-center">
                 Images not found
             </div>
-            <a href="<?= ROOT ?>/admin/family">
+            <a href="<?= ROOT ?>/admin/story">
                 <button type="button" class="btn btn-secondary mt-2">Back</button>
             </a>
         <?php endif; ?>
@@ -129,11 +113,13 @@
                 let img = e.currentTarget.parentNode.querySelector("img");
                 img.src = URL.createObjectURL(file);
             }
+
+            document.querySelector(".story-date").valueAsDate = new Date('<?= old_value('date', $row->date) ?>');
         </script>
     </div>
 <?php elseif ($action == 'delete'): ?>
     <div class="col-md-6 mx-auto p-3">
-        <h5>Delete person from family list:</h5>
+        <h5>Delete story from the list:</h5>
 
         <?php if (!empty($errors)): ?>
             <div class="alert alert-danger text-center">
@@ -143,6 +129,10 @@
 
         <?php if (!empty($row)): ?>
             <form method="POST">
+                <input value="<?= old_value('title', $row->title) ?>" type="text" name="title" 
+                    placeholder="Story title" class="form-control mt-2" disabled>
+                <br>
+
                 <label class="mb-4">
                     <input onchange="display_image(this.files[0], event)" type="file" name="image" class="d-none">
                     <img src="<?= get_image($row->image) ?>"
@@ -152,15 +142,15 @@
 
                 <button class="btn btn-danger mt-4">Delete</button>
 
-                <a href="<?= ROOT ?>/admin/family">
+                <a href="<?= ROOT ?>/admin/story">
                     <button type="button" class="btn btn-secondary mt-4">Back</button>
                 </a>
             </form>
         <?php else: ?>
             <div class="alert alert-danger text-center">
-                Image not found
+                Story not found
             </div>
-            <a href="<?= ROOT ?>/admin/family">
+            <a href="<?= ROOT ?>/admin/story">
                 <button type="button" class="btn btn-secondary mt-2">Back</button>
             </a>
         <?php endif; ?>
