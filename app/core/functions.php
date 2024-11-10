@@ -54,3 +54,9 @@ function get_image($filename = '')
 
 	return ROOT . '/assets/images/noimage.png';
 }
+
+
+function get_date($date) 
+{
+	return date("jS M, Y", strtotime($date));
+}

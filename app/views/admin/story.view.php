@@ -4,7 +4,7 @@
 <?php if ($action == 'new'): ?>
 
     <div class="col-md-6 mx-auto p-3">
-        <h5 class="text-center">Add new family person:</h5>
+        <h5 class="text-center">Add new story:</h5>
 
         <?php if (!empty($errors)): ?>
             <div class="alert alert-danger text-center">
@@ -23,39 +23,21 @@
             </label>
             <br>
 
-            <input value="<?= old_value('name') ?>" type="text" name="name"
-                placeholder="Full name" class="form-control mt-2">
             <input value="<?= old_value('title') ?>" type="text" name="title"
-                placeholder="Title" class="form-control mb-2">
+                placeholder="Story title" class="form-control mt-2">
+            <textarea name="description" placeholder="Story description" class="form-control mb-2"
+                value="<?= old_value('description') ?>" rows="6"></textarea>
             <br>
 
-            <label class="text-start d-block">List order (if 0, then person in top of family list):</label>
+            <label class="text-start d-block">Story date:</label>
+            <input value="<?= old_value('date') ?>" type="date" name="date"
+                placeholder="Story date" class="form-control mt-2">
+            <br>
+
+            <label class="text-start d-block">List order (if 0, then story in top of list):</label>
             <input value="<?= old_value('list_order') ?>" type="number" name="list_order"
                 class="form-control mb-2" min="0" placeholder="0">
             <br>
-
-            <small class="bg-primary text-white rounded p-1 mb-3 d-block">
-                Please, enter full links e.g https://www.yoursite.com
-            </small>
-            <br>
-
-            <div class="text-start">
-                <label>Twiiter link:</label>
-                <input type="text" name="twitter_link" placeholder="Twiiter link" class="form-control mb-2"
-                    value="<?= old_value("twitter_link") ?>">
-
-                <label>Facebook link:</label>
-                <input type="text" name="facebook_link" placeholder="Facebook link" class="form-control mb-2"
-                    value="<?= old_value("facebook_link") ?>">
-
-                <label>Instagram link:</label>
-                <input type="text" name="instagram_link" placeholder="Instagram link" class="form-control mb-2"
-                    value="<?= old_value("instagram_link") ?>">
-
-                <label>LinkedIn link:</label>
-                <input type="text" name="linkedin_link" placeholder="LinkedIn link" class="form-control mb-4"
-                    value="<?= old_value("linkedin_link") ?>">
-            </div>
 
             <button class="btn btn-primary mt-2">Save</button>
 
@@ -202,7 +184,7 @@
                 <th>#</th>
                 <th>Image</th>
                 <th>Story Title</th>
-                <th>Description</th>
+                <th class="col-sm-3">Description</th>
                 <th>Date</th>
                 <th>Rank List</th>
                 <th>Actions</th>
@@ -221,7 +203,7 @@
 
                         <td><?= ucfirst(esc($row->title)) ?></td>
                         <td><?= esc($row->description) ?></td>
-                        <td><?= esc($row->date) ?></td>
+                        <td><?= get_date(esc($row->date)) ?></td>
                         <td><?= $row->list_order ?></td>
 
                         <td>
