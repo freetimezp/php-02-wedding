@@ -172,6 +172,9 @@ class Admin
 
                     move_uploaded_file($_FILES['image']['tmp_name'], $destination);
 
+                    $image_class = new Image();
+                    $image_class->resize($destination);
+
                     $_POST['image'] = $destination;
 
                     $family->insert($_POST);
@@ -193,6 +196,9 @@ class Admin
                         $destination = $folder . time() . '-' . $_FILES['image']['name'];
 
                         move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+
+                        $image_class = new Image();
+                        $image_class->resize($destination);
 
                         $_POST['image'] = $destination;
 
