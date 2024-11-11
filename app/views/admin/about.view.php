@@ -24,14 +24,32 @@
             <br>
 
             <input value="<?= old_value('title') ?>" type="text" name="title"
-                placeholder="About title" class="form-control mt-2">
-            <textarea name="description" placeholder="About description" class="form-control mb-2"
+                placeholder="Title" class="form-control mt-2">
+            <input value="<?= old_value('name') ?>" type="text" name="name"
+                placeholder="Full Name" class="form-control mt-2">
+            <input value="<?= old_value('icon') ?>" type="text" name="icon"
+                placeholder="Icon class" class="form-control mt-2">
+            <textarea name="description" placeholder="Description" class="form-control mt-2"
                 value="<?= old_value('description') ?>" rows="6"></textarea>
             <br>
 
-            <label class="text-start d-block">About date:</label>
-            <input value="<?= old_value('date') ?>" type="date" name="date"
-                placeholder="About date" class="form-control mt-2">
+            <div class="text-start">
+                <label>Twiiter link:</label>
+                <input type="text" name="twitter_link" placeholder="Twiiter link" class="form-control mb-2"
+                    value="<?= old_value("twitter_link") ?>">
+
+                <label>Facebook link:</label>
+                <input type="text" name="facebook_link" placeholder="Facebook link" class="form-control mb-2"
+                    value="<?= old_value("facebook_link") ?>">
+
+                <label>Instagram link:</label>
+                <input type="text" name="instagram_link" placeholder="Instagram link" class="form-control mb-2"
+                    value="<?= old_value("instagram_link") ?>">
+
+                <label>LinkedIn link:</label>
+                <input type="text" name="linkedin_link" placeholder="LinkedIn link" class="form-control mb-4"
+                    value="<?= old_value("linkedin_link") ?>">
+            </div>
             <br>
 
             <label class="text-start d-block">List order (if 0, then about in top of list):</label>
@@ -173,9 +191,10 @@
             <tr>
                 <th>#</th>
                 <th>Image</th>
+                <th>Name</th>
+                <th>Icon class</th>
                 <th>About Title</th>
                 <th class="col-sm-3">Description</th>
-                <th>Date</th>
                 <th>Rank List</th>
                 <th>Actions</th>
             </tr>
@@ -191,9 +210,10 @@
                                 style="width: 200px; height: 200px; object-fit:cover;">
                         </td>
 
+                        <td><?= ucfirst(esc($row->name)) ?></td>
+                        <td><?= esc($row->icon) ?></td>
                         <td><?= ucfirst(esc($row->title)) ?></td>
                         <td><?= esc($row->description) ?></td>
-                        <td><?= get_date(esc($row->date)) ?></td>
                         <td><?= $row->list_order ?></td>
 
                         <td>
