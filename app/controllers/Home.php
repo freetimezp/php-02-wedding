@@ -24,6 +24,12 @@ class Home
 		$family->order_column = 'list_order';
 		$data['family'] = $family->findAll();
 
+		$story = new Story_model();
+		$story->order_type = "asc";
+		$story->limit = 4;
+		$story->order_column = 'list_order';
+		$data['story'] = $story->findAll();
+
 		$this->view('home', $data);
 	}
 }
