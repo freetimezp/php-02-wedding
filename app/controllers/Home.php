@@ -30,6 +30,13 @@ class Home
 		$story->order_column = 'list_order';
 		$data['story'] = $story->findAll();
 
+		$about = new About_model();
+		$about->order_type = "asc";
+		$about->limit = 2;
+		$about->order_column = 'list_order';
+		$data['about'] = $about->findAll();
+
+
 		$this->view('home', $data);
 	}
 }

@@ -148,7 +148,7 @@
     </div>
 <?php elseif ($action == 'delete'): ?>
     <div class="col-md-6 mx-auto p-3">
-        <h5>Delete about section from the list:</h5>
+        <h5>Delete this about section from the list:</h5>
 
         <?php if (!empty($errors)): ?>
             <div class="alert alert-danger text-center">
@@ -223,7 +223,9 @@
                             </td>
 
                             <td><?= ucfirst(esc($row->name)) ?></td>
-                            <td><?= esc($row->icon) ?></td>
+                            <td class="text-center">
+                                <i class="fs-1 fa fa-<?= esc($row->icon) ?>"></i>
+                            </td>
                             <td><?= ucfirst(esc($row->title)) ?></td>
                             <td><?= esc($row->description) ?></td>
                             <td><?= $row->list_order ?></td>
