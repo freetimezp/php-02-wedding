@@ -68,6 +68,92 @@ class Admin
     }
 
 
+    public function about($action = null, $id = null)
+    {
+        $user = new User();
+        $about = new About_model();
+        //$about->create_table();
+
+        if (!$user->logged_in()) {
+            redirect('login');
+        }
+
+        $data['action'] = $action;
+        $data['rows'] = $about->findAll();
+
+        if ($action == 'new') {
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $folder = "uploads/";
+
+                if (!file_exists($folder)) {
+                    mkdir($folder, 0777, true);
+                }
+
+                if ($about->validate($_FILES, $_POST)) {
+                    $destination = $folder . time() . '-' . $_FILES['image']['name'];
+
+                    move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+
+                    $image_class = new Image();
+                    $image_class->resize($destination);
+
+                    $_POST['image'] = $destination;
+
+                    $about->insert($_POST);
+                    redirect('admin/about');
+                }
+            }
+        } else if ($action == 'edit') {
+            $data['row'] = $about->first(['id' => $id]);
+
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $folder = "uploads/";
+
+                if (!file_exists($folder)) {
+                    mkdir($folder, 0777, true);
+                }
+
+                if ($about->validate($_FILES, $_POST, $id)) {
+                    if (!empty($_FILES['image']['name'])) {
+                        $destination = $folder . time() . '-' . $_FILES['image']['name'];
+
+                        move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+
+                        $image_class = new Image();
+                        $image_class->resize($destination);
+
+                        $_POST['image'] = $destination;
+
+                        if (file_exists($data['row']->image)) {
+                            unlink($data['row']->image);
+                        }
+                    }
+
+                    $about->update($id, $_POST);
+
+                    redirect('admin/about');
+                }
+            }
+        } else if ($action == 'delete') {
+            $data['row'] = $about->first(['id' => $id]);
+
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $about->delete($id);
+
+                if (file_exists($data['row']->image)) {
+                    unlink($data['row']->image);
+                }
+
+                redirect('admin/about');
+            }
+        }
+
+        $data['errors'] = $about->errors;
+
+        $this->view('admin/about', $data);
+    }
+
+
     public function gallery($action = null, $id = null)
     {
         $user = new User();

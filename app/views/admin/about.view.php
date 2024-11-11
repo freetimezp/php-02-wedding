@@ -4,7 +4,7 @@
 <?php if ($action == 'new'): ?>
 
     <div class="col-md-6 mx-auto p-3">
-        <h5 class="text-center">Add new story:</h5>
+        <h5 class="text-center">Add About section item:</h5>
 
         <?php if (!empty($errors)): ?>
             <div class="alert alert-danger text-center">
@@ -24,24 +24,24 @@
             <br>
 
             <input value="<?= old_value('title') ?>" type="text" name="title"
-                placeholder="Story title" class="form-control mt-2">
-            <textarea name="description" placeholder="Story description" class="form-control mb-2"
+                placeholder="About title" class="form-control mt-2">
+            <textarea name="description" placeholder="About description" class="form-control mb-2"
                 value="<?= old_value('description') ?>" rows="6"></textarea>
             <br>
 
-            <label class="text-start d-block">Story date:</label>
+            <label class="text-start d-block">About date:</label>
             <input value="<?= old_value('date') ?>" type="date" name="date"
-                placeholder="Story date" class="form-control mt-2">
+                placeholder="About date" class="form-control mt-2">
             <br>
 
-            <label class="text-start d-block">List order (if 0, then story in top of list):</label>
+            <label class="text-start d-block">List order (if 0, then about in top of list):</label>
             <input value="<?= old_value('list_order') ?>" type="number" name="list_order"
                 class="form-control mb-2" min="0" placeholder="0">
             <br>
 
             <button class="btn btn-primary mt-2">Save</button>
 
-            <a href="<?= ROOT ?>/admin/story">
+            <a href="<?= ROOT ?>/admin/about">
                 <button type="button" class="btn btn-secondary mt-2">Back</button>
             </a>
         </form>
@@ -56,7 +56,7 @@
 
 <?php elseif ($action == 'edit'): ?>
     <div class="col-md-6 mx-auto p-3">
-        <h5>Edit story info:</h5>
+        <h5>Edit about info:</h5>
 
         <?php if (!empty($errors)): ?>
             <div class="alert alert-danger text-center">
@@ -76,18 +76,18 @@
                 <br>
 
                 <input value="<?= old_value('title', $row->title) ?>" type="text" name="title"
-                    placeholder="Story title" class="form-control mt-2">
-                <textarea name="description" placeholder="Story description" class="form-control mb-2"
+                    placeholder="About title" class="form-control mt-2">
+                <textarea name="description" placeholder="About description" class="form-control mb-2"
                     rows="6"><?= old_value('description', $row->description) ?></textarea>
                 <br>
 
-                <label class="text-start d-block">Story date:</label>
+                <label class="text-start d-block">About date:</label>
                 <input value="<?= old_value('date', $row->date) ?>" type="date" name="date"
-                    placeholder="Story date" class="form-control mt-2 story-date">
+                    placeholder="About date" class="form-control mt-2 about-date">
                 <br>
 
                 <label class="text-start d-block">
-                    List order (if 0, then story in top of list):
+                    List order (if 0, then about in top of list):
                 </label>
                 <input value="<?= old_value('list_order', $row->list_order) ?>" type="number"
                     name="list_order" class="form-control mb-2" min="0">
@@ -95,7 +95,7 @@
 
                 <button class="btn btn-primary mt-2">Save</button>
 
-                <a href="<?= ROOT ?>/admin/story">
+                <a href="<?= ROOT ?>/admin/about">
                     <button type="button" class="btn btn-secondary mt-2">Back</button>
                 </a>
             </form>
@@ -103,7 +103,7 @@
             <div class="alert alert-danger text-center">
                 Images not found
             </div>
-            <a href="<?= ROOT ?>/admin/story">
+            <a href="<?= ROOT ?>/admin/about">
                 <button type="button" class="btn btn-secondary mt-2">Back</button>
             </a>
         <?php endif; ?>
@@ -114,12 +114,12 @@
                 img.src = URL.createObjectURL(file);
             }
 
-            document.querySelector(".story-date").valueAsDate = new Date('<?= old_value('date', $row->date) ?>');
+            document.querySelector(".about-date").valueAsDate = new Date('<?= old_value('date', $row->date) ?>');
         </script>
     </div>
 <?php elseif ($action == 'delete'): ?>
     <div class="col-md-6 mx-auto p-3">
-        <h5>Delete story from the list:</h5>
+        <h5>Delete about section from the list:</h5>
 
         <?php if (!empty($errors)): ?>
             <div class="alert alert-danger text-center">
@@ -130,7 +130,7 @@
         <?php if (!empty($row)): ?>
             <form method="POST">
                 <input value="<?= old_value('title', $row->title) ?>" type="text" name="title"
-                    placeholder="Story title" class="form-control mt-2" disabled>
+                    placeholder="About title" class="form-control mt-2" disabled>
                 <br>
 
                 <label class="mb-4">
@@ -142,15 +142,15 @@
 
                 <button class="btn btn-danger mt-4">Delete</button>
 
-                <a href="<?= ROOT ?>/admin/story">
+                <a href="<?= ROOT ?>/admin/about">
                     <button type="button" class="btn btn-secondary mt-4">Back</button>
                 </a>
             </form>
         <?php else: ?>
             <div class="alert alert-danger text-center">
-                Story not found
+                About section not found
             </div>
-            <a href="<?= ROOT ?>/admin/story">
+            <a href="<?= ROOT ?>/admin/about">
                 <button type="button" class="btn btn-secondary mt-2">Back</button>
             </a>
         <?php endif; ?>
@@ -158,9 +158,9 @@
 <?php else: ?>
 
     <h5>
-        Story Gallery |
+        About Gallery |
 
-        <a href="<?= ROOT ?>/admin/story/new">
+        <a href="<?= ROOT ?>/admin/about/new">
             <button class="btn btn-sm btn-primary">
                 Add new
             </button>
@@ -173,7 +173,7 @@
             <tr>
                 <th>#</th>
                 <th>Image</th>
-                <th>Story Title</th>
+                <th>About Title</th>
                 <th class="col-sm-3">Description</th>
                 <th>Date</th>
                 <th>Rank List</th>
@@ -197,18 +197,18 @@
                         <td><?= $row->list_order ?></td>
 
                         <td>
-                            <a href="<?= ROOT ?>/admin/story/edit/<?= $row->id ?>">
+                            <a href="<?= ROOT ?>/admin/about/edit/<?= $row->id ?>">
                                 <button class="btn btn-sm btn-warning">Edit</button>
                             </a>
 
-                            <a href="<?= ROOT ?>/admin/story/delete/<?= $row->id ?>">
+                            <a href="<?= ROOT ?>/admin/about/delete/<?= $row->id ?>">
                                 <button class="btn btn-sm btn-danger">Delete</button>
                             </a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             <?php else: ?>
-                <tr>No story were found</tr>
+                <tr>No about section were found</tr>
             <?php endif; ?>
         </tbody>
 
