@@ -339,9 +339,17 @@
                                     <span class="pt-1">Contact</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2"
+                                    href="<?= ROOT ?>/admin/settings">
+                                    <span class="bi bi-gear"></span>
+                                    <span class="pt-1">Settings</span>
+                                </a>
+                            </li>
                         </ul>
 
-                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center 
+                            px-3 mt-4 mb-1 text-body-secondary text-uppercase">
                             <span>OTHER LINKS</span>
                             <a class="link-secondary" href="#" aria-label="Add a new report">
                                 <svg class="bi">
@@ -361,14 +369,6 @@
                         <hr class="my-3">
 
                         <ul class="nav flex-column mb-auto">
-                            <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                    <svg class="bi">
-                                        <use xlink:href="#gear-wide-connected" />
-                                    </svg>
-                                    Settings
-                                </a>
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2"
                                     href="<?= ROOT ?>/logout">

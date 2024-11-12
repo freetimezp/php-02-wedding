@@ -73,13 +73,13 @@
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
                             <h1 class="display-1 font-secondary text-white mt-n3 mb-md-4">
-                                Jack & Rose
+                                <?= APP_NAME ?>
                             </h1>
 
                             <div class="d-inline-block border-top border-bottom border-light py-3 px-4">
                                 <h3 class="text-uppercase font-weight-normal text-white m-0"
                                     style="letter-spacing: 2px;">
-                                    We're getting married
+                                    <?= APP_DESC ?>
                                 </h3>
                             </div>
 
@@ -97,13 +97,13 @@
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
                             <h1 class="display-1 font-secondary text-white mt-n3 mb-md-4">
-                                Jack & Rose
+                                <?= APP_NAME ?>
                             </h1>
 
                             <div class="d-inline-block border-top border-bottom border-light py-3 px-4">
                                 <h3 class="text-uppercase font-weight-normal text-white m-0"
                                     style="letter-spacing: 2px;">
-                                    We're getting married
+                                    <?= APP_DESC ?>
                                 </h3>
                             </div>
 
@@ -467,21 +467,21 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="text-center">
-                        <form>
+                        <form method="POST" onsubmit="submit_form(event)">
                             <div class="form-row">
                                 <div class="form-group col-sm-6">
                                     <input type="text" class="form-control bg-secondary border-0 py-4 px-3"
-                                        placeholder="Your Name" />
+                                        placeholder="Your Name" name="name" required />
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <input type="email" class="form-control bg-secondary border-0 py-4 px-3"
-                                        placeholder="Your Email" />
+                                        placeholder="Your Email" name="email" required />
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-sm-6">
-                                    <select class="form-control bg-secondary border-0" style="height: 52px;">
-                                        <option>Number of Guest</option>
+                                    <select name="guests" class="form-control bg-secondary border-0" style="height: 52px;">
+                                        <option value="1">Number of Guest</option>
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -489,7 +489,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-sm-6">
-                                    <select class="form-control bg-secondary border-0" style="height: 52px;">
+                                    <select name="attending" class="form-control bg-secondary border-0" style="height: 52px;">
                                         <option>I'm Attending</option>
                                         <option>All Events</option>
                                         <option>Wedding Party</option>
@@ -498,7 +498,7 @@
                             </div>
                             <div class="form-group">
                                 <textarea class="form-control bg-secondary border-0 py-2 px-3" rows="5"
-                                    placeholder="Message" required="required"></textarea>
+                                    placeholder="Message" name="message" required="required"></textarea>
                             </div>
                             <div>
                                 <button class="btn btn-primary font-weight-bold py-3 px-5" type="submit">Submit</button>
@@ -576,6 +576,26 @@
 
     <!-- Template Javascript -->
     <script src="<?= ROOT; ?>/assets/js/main.js"></script>
+
+    <script>
+        function submit_form(e) {
+            e.preventDefault();
+
+            var ajax = new XMLHttpRequest();
+
+            ajax.addEventListener('readystatechange', function() {
+                if (ajax.readyState == 4 && ajax.status == 200) {
+                    alert(ajax.responseText);
+                }
+            });
+
+            let myForm = new FormData(e.currentTarget);
+
+            ajax.open('POST', '<?= ROOT ?>/ajax', true);
+            ajax.send(myForm);
+
+        }
+    </script>
 </body>
 
 </html>

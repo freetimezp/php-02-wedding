@@ -20,8 +20,8 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
 	define('ROOT', 'https://www.yourwebsite.com');
 }
 
-define('APP_NAME', "Wedding");
-define('APP_DESC', "Best website on the planet");
+define('APP_NAME', "My Wedding");
+define('APP_DESC', "Best day ever");
 
 /** true means show errors **/
 define('DEBUG', true);
