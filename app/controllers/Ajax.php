@@ -10,6 +10,7 @@ class Ajax
         $info = [];
         $info['message'] = "";
         $info['errors'] = [];
+        $info['success'] = false;
 
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $rsvp = new Rsvp_model();
@@ -18,6 +19,7 @@ class Ajax
             if ($rsvp->validate($_POST)) {
                 $rsvp->insert($_POST);
                 $info['message'] = "Thank you for your message..";
+                $info['success'] = true;
             } else {
                 $info['errors'] = $rsvp->errors;
             }

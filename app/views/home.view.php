@@ -585,7 +585,18 @@
 
             ajax.addEventListener('readystatechange', function() {
                 if (ajax.readyState == 4 && ajax.status == 200) {
-                    alert(ajax.responseText);
+                    let data = JSON.parse(ajax.responseText);
+
+                    if (typeof(data) == 'object') {
+                        if (!data.success) {
+                            alert(data.errors.toString(". "));
+                        } else {
+                            alert(data.message);
+                            window.location.reload();
+                        }
+                    } else {
+                        console.log(ajax.responseText);
+                    }
                 }
             });
 

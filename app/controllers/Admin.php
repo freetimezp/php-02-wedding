@@ -404,6 +404,35 @@ class Admin
     }
 
 
+    public function rsvp($action = null, $id = null)
+    {
+        $user = new User();
+        $rsvp = new Rsvp_model();
+        //$rsvp->create_table();
+
+        if (!$user->logged_in()) {
+            redirect('login');
+        }
+
+        $data['action'] = $action;
+        $data['rows'] = $rsvp->findAll();
+
+        if ($action == 'delete') {
+            $data['row'] = $rsvp->first(['id' => $id]);
+
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $rsvp->delete($id);
+
+                redirect('admin/rsvp');
+            }
+        }
+
+        $data['errors'] = $rsvp->errors;
+
+        $this->view('admin/rsvp', $data);
+    }
+
+
     public function contact($action = null, $id = null)
     {
         $user = new User();
