@@ -29,6 +29,18 @@ function old_value($key, $default = '')
 	return $default;
 }
 
+function old_select($key, $value, $default = '')
+{
+	if (!empty($_POST[$key]) && $_POST[$key] == $value) {
+		return ' selected ';
+	}
+
+	if (!empty($default) && $default == $value) {
+		return ' selected ';
+	}
+
+	return '';
+}
 
 function user($key = '')
 {
@@ -56,7 +68,7 @@ function get_image($filename = '')
 }
 
 
-function get_date($date) 
+function get_date($date)
 {
 	return date("jS M, Y", strtotime($date));
 }

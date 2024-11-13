@@ -318,6 +318,92 @@ class Admin
     }
 
 
+    public function settings($action = null, $id = null)
+    {
+        $user = new User();
+        $setting = new Settings_model();
+        //$setting->create_table();
+
+        if (!$user->logged_in()) {
+            redirect('login');
+        }
+
+        $data['action'] = $action;
+        $data['rows'] = $setting->findAll();
+
+        if ($action == 'new') {
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $folder = "uploads/";
+
+                if (!file_exists($folder)) {
+                    mkdir($folder, 0777, true);
+                }
+
+                if ($setting->validate($_FILES, $_POST)) {
+                    $destination = $folder . time() . '-' . $_FILES['image']['name'];
+
+                    move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+
+                    $image_class = new Image();
+                    $image_class->resize($destination);
+
+                    $_POST['image'] = $destination;
+
+                    $setting->insert($_POST);
+                    redirect('admin/settings');
+                }
+            }
+        } else if ($action == 'edit') {
+            $data['row'] = $setting->first(['id' => $id]);
+
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $folder = "uploads/";
+
+                if (!file_exists($folder)) {
+                    mkdir($folder, 0777, true);
+                }
+
+                if ($setting->validate($_FILES, $_POST, $id)) {
+                    if (!empty($_FILES['image']['name'])) {
+                        $destination = $folder . time() . '-' . $_FILES['image']['name'];
+
+                        move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+
+                        $image_class = new Image();
+                        $image_class->resize($destination);
+
+                        $_POST['image'] = $destination;
+
+                        if (file_exists($data['row']->image)) {
+                            unlink($data['row']->image);
+                        }
+                    }
+
+                    $setting->update($id, $_POST);
+
+                    redirect('admin/settings');
+                }
+            }
+        } else if ($action == 'delete') {
+            $data['row'] = $setting->first(['id' => $id]);
+
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $setting->delete($id);
+
+                if (file_exists($data['row']->image)) {
+                    unlink($data['row']->image);
+                }
+
+                redirect('admin/settings');
+            }
+        }
+
+        $data['errors'] = $setting->errors;
+
+        $this->view('admin/settings', $data);
+    }
+
+
     public function story($action = null, $id = null)
     {
         $user = new User();
