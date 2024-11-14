@@ -67,8 +67,8 @@
         <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item position-relative active" style="height: 100vh; min-height: 400px;">
-                    <img class="position-absolute w-100 h-100" src="<?= ROOT; ?>/assets/images/carousel-1.jpg"
-                        style="object-fit: cover;">
+                    <img class="position-absolute w-100 h-100"
+                        src="<?= get_image($SETTINGS['hero image']) ?? '' ?>" style="object-fit: cover;">
 
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
@@ -550,7 +550,9 @@
             </div>
             <p class="m-0">
                 &copy; <a class="text-primary" href="#"> 2024</a>.
-                Designed by <a class="text-primary" href="https://youtube.com">Freetime</a>.
+                Designed by <a class="text-primary" href="https://youtube.com">
+                    <?= ucfirst(esc($SETTINGS['designed by'])) ?? 'Unknown' ?>
+                </a>.
             </p>
         </div>
     </div>

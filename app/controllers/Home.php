@@ -36,6 +36,14 @@ class Home
 		$about->order_column = 'list_order';
 		$data['about'] = $about->findAll();
 
+		$setting = new Settings_model();
+		$data['SETTINGS'] = [];
+		$data['settings'] = $setting->findAll();
+		if ($data['settings']) {
+			foreach ($data['settings'] as $row) {
+				$data['SETTINGS'][$row->setting] = $row->value;
+			}
+		}
 
 		$this->view('home', $data);
 	}

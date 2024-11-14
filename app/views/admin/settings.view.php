@@ -66,12 +66,7 @@
                     <input value="<?= old_value('value', $row->value) ?>" type="text" name="value"
                         placeholder="Setting value" class="form-control mb-2">
                 <?php endif; ?>
-
                 <br>
-
-
-
-
 
                 <button class="btn btn-primary mt-2">Save</button>
 
@@ -107,9 +102,24 @@
 
         <?php if (!empty($row)): ?>
             <form method="POST">
-                <input value="<?= old_value('saetting', $row->setting) ?>" type="text" name="setting" disabled>
-                <input value="<?= old_value('value', $row->value) ?>" type="text" name="value" disabled>
+                <input value="<?= old_value('saetting', $row->setting) ?>" type="text" name="setting"
+                    class="form-control" disabled>
                 <br>
+
+                <?php if ($row->type == 'image'): ?>
+                    <label>(click to change image)</label><br>
+
+                    <label class="mb-4">
+                        <input onchange="display_image(this.files[0], event)" type="file" name="value" class="d-none">
+                        <img src="<?= get_image($row->value) ?>"
+                            style="width: 300px; height: 300px; object-fit: cover;">
+                    </label>
+                <?php else: ?>
+                    <input value="<?= old_value('value', $row->value) ?>" type="text" name="value"
+                        class="form-control mb-3" disabled>
+                <?php endif; ?>
+                <br>
+
 
                 <button class="btn btn-danger mt-4">Delete</button>
 

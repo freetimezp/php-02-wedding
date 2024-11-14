@@ -364,18 +364,18 @@ class Admin
                 }
 
                 if ($setting->validate($_FILES, $_POST, $id)) {
-                    if (!empty($_FILES['image']['name'])) {
-                        $destination = $folder . time() . '-' . $_FILES['image']['name'];
+                    if (!empty($_FILES['value']['name'])) {
+                        $destination = $folder . time() . '-' . $_FILES['value']['name'];
 
-                        move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+                        move_uploaded_file($_FILES['value']['tmp_name'], $destination);
 
                         $image_class = new Image();
                         $image_class->resize($destination);
 
-                        $_POST['image'] = $destination;
+                        $_POST['value'] = $destination;
 
-                        if (file_exists($data['row']->image)) {
-                            unlink($data['row']->image);
+                        if (file_exists($data['row']->value)) {
+                            unlink($data['row']->value);
                         }
                     }
 
