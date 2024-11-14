@@ -51,60 +51,39 @@
 
         <?php if (!empty($row)): ?>
             <form method="POST" class="text-center" enctype="multipart/form-data">
-                <label>(click to change image)</label><br>
+                <input value="<?= old_value('setting', $row->setting) ?>" type="text" name="setting"
+                    placeholder="Setting name" class="form-control mb-2">
 
-                <label class="mb-4">
-                    <input onchange="display_image(this.files[0], event)" type="file" name="image" class="d-none">
-                    <img src="<?= get_image($row->image) ?>"
-                        style="width: 300px; height: 300px; object-fit: cover;">
-                </label>
+                <?php if ($row->type == 'image'): ?>
+                    <label>(click to change image)</label><br>
+
+                    <label class="mb-4">
+                        <input onchange="display_image(this.files[0], event)" type="file" name="value" class="d-none">
+                        <img src="<?= get_image($row->value) ?>"
+                            style="width: 300px; height: 300px; object-fit: cover;">
+                    </label>
+                <?php else: ?>
+                    <input value="<?= old_value('value', $row->value) ?>" type="text" name="value"
+                        placeholder="Setting value" class="form-control mb-2">
+                <?php endif; ?>
+
                 <br>
 
-                <input value="<?= old_value('name', $row->name) ?>" type="text" name="name"
-                    placeholder="Full name" class="form-control mt-2">
-                <input value="<?= old_value('title', $row->title) ?>" type="text" name="title"
-                    placeholder="Title" class="form-control mb-2">
-                <br>
 
-                <label class="text-start d-block">List order (if 0, then person in top of family list):</label>
-                <input value="<?= old_value('list_order', $row->list_order) ?>" type="number" name="list_order"
-                    class="form-control mb-2" min="0">
-                <br>
 
-                <small class="bg-primary text-white rounded p-1 mb-3 d-block">
-                    Please, enter full links e.g https://www.yoursite.com
-                </small>
-                <br>
 
-                <div class="text-start">
-                    <label>Twiiter link:</label>
-                    <input type="text" name="twitter_link" placeholder="Twiiter link" class="form-control mb-2"
-                        value="<?= old_value("twitter_link", $row->twitter_link) ?>">
-
-                    <label>Facebook link:</label>
-                    <input type="text" name="facebook_link" placeholder="Facebook link" class="form-control mb-2"
-                        value="<?= old_value("facebook_link", $row->facebook_link) ?>">
-
-                    <label>Instagram link:</label>
-                    <input type="text" name="instagram_link" placeholder="Instagram link" class="form-control mb-2"
-                        value="<?= old_value("instagram_link", $row->instagram_link) ?>">
-
-                    <label>LinkedIn link:</label>
-                    <input type="text" name="linkedin_link" placeholder="LinkedIn link" class="form-control mb-4"
-                        value="<?= old_value("linkedin_link", $row->linkedin_link) ?>">
-                </div>
 
                 <button class="btn btn-primary mt-2">Save</button>
 
-                <a href="<?= ROOT ?>/admin/family">
+                <a href="<?= ROOT ?>/admin/settings">
                     <button type="button" class="btn btn-secondary mt-2">Back</button>
                 </a>
             </form>
         <?php else: ?>
             <div class="alert alert-danger text-center">
-                Images not found
+                Setting not found
             </div>
-            <a href="<?= ROOT ?>/admin/family">
+            <a href="<?= ROOT ?>/admin/settings">
                 <button type="button" class="btn btn-secondary mt-2">Back</button>
             </a>
         <?php endif; ?>
@@ -118,7 +97,7 @@
     </div>
 <?php elseif ($action == 'delete'): ?>
     <div class="col-md-6 mx-auto p-3">
-        <h5>Delete person from family list:</h5>
+        <h5>Delete setting from list:</h5>
 
         <?php if (!empty($errors)): ?>
             <div class="alert alert-danger text-center">
@@ -128,24 +107,21 @@
 
         <?php if (!empty($row)): ?>
             <form method="POST">
-                <label class="mb-4">
-                    <input onchange="display_image(this.files[0], event)" type="file" name="image" class="d-none">
-                    <img src="<?= get_image($row->image) ?>"
-                        style="width: 300px; height: 300px; object-fit: cover;">
-                </label>
+                <input value="<?= old_value('saetting', $row->setting) ?>" type="text" name="setting" disabled>
+                <input value="<?= old_value('value', $row->value) ?>" type="text" name="value" disabled>
                 <br>
 
                 <button class="btn btn-danger mt-4">Delete</button>
 
-                <a href="<?= ROOT ?>/admin/family">
+                <a href="<?= ROOT ?>/admin/settings">
                     <button type="button" class="btn btn-secondary mt-4">Back</button>
                 </a>
             </form>
         <?php else: ?>
             <div class="alert alert-danger text-center">
-                Image not found
+                Setting not found
             </div>
-            <a href="<?= ROOT ?>/admin/family">
+            <a href="<?= ROOT ?>/admin/settings">
                 <button type="button" class="btn btn-secondary mt-2">Back</button>
             </a>
         <?php endif; ?>

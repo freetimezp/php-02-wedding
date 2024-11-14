@@ -38,10 +38,6 @@ class Settings_model
                     $this->errors['image'] = "Only this types of image is available: " . implode(", ", $allowed_types);
                 }
             }
-
-            if (empty($post_data['value'])) {
-                $this->errors['value'] = "A value is required!";
-            }
         }
 
 
