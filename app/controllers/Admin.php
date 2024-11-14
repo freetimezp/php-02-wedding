@@ -15,7 +15,11 @@ class Admin
             redirect('login');
         }
 
-        $this->view('admin/dashboard');
+        $data['total_users'] = $user->get_row("SELECT count(*) as total FROM users");
+        $data['total_images'] = $user->get_row("SELECT count(*) as total FROM gallery");
+        $data['total_rsvp'] = $user->get_row("SELECT count(*) as total FROM rsvp");
+
+        $this->view('admin/dashboard', $data);
     }
 
     public function users($action = null, $id = null)
